@@ -16,6 +16,28 @@ GOAL_HEIGHT = 128
 max_H = 128
 max_W = 1024
 
+# Hosted on my personal account until I figure something else out
+cloud_model_location = "1j-ECpr0PIVbJGeRKFeYozDq7M4urk7sP"
+
+
+
+@st.cache
+def load_model():
+    save_dest = Path('model')
+    save_dest.mkdir(exist_ok=True)
+
+    f_checkpoint = Path("model/scripted_model1.pt")
+
+    if not f_checkpoint.exists():
+        with streamlit.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from GD_download import download_file_from_google_drive
+            download_file_from_google_drive(cloud_model_location, f_checkpoint)
+
+    model = torch.jit.load(f_checkpoint)
+
+    return model
+
+
 if __name__ == '__main__':
     streamlit.set_page_config(page_title='LaTeX OCR Model',
                               layout="centered",
@@ -60,7 +82,7 @@ if __name__ == '__main__':
         if uploaded_image is not None and image_tensor is not None:
             files = {"file": uploaded_image.getvalue()}
             with streamlit.spinner('Converting Image to LaTeX'):
-                model = torch.jit.load("Model/scripted_model1.pt")
+                model = load_model()
                 prediction = model(image_tensor.unsqueeze(0))
                 latex_code = token_to_strings(tokens=prediction)
 
@@ -76,8 +98,6 @@ if __name__ == '__main__':
 
         else:
             streamlit.error('Please upload an image.')
-
-
 
 
 
