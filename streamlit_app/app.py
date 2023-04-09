@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 from PIL import Image
 import streamlit
-
+import torch
 from albumentations.augmentations.geometric.resize import Resize
 import torch.nn.functional as F
 from pathlib import Path
 import sys
-from load_model import load_model
+from load_model import load_weights
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from Tokenizer.Tokenizer import token_to_strings
@@ -46,11 +46,13 @@ uploaded_image = streamlit.file_uploader(
 )
 
 
-@streamlit.cache
-def load():
-    return load_model()
+#@streamlit.cache
+def load_model():
+    path = load_weights()
+    model = torch.jit.load(path)
+    return model
 
-model = load()
+model = load_model
 
 
 

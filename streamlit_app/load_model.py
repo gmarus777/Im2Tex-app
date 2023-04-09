@@ -1,11 +1,11 @@
-import torch
+
 import gdown
 from pathlib import Path
 import sys
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 
-def load_model():
+def load_weights():
     save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
 
@@ -21,5 +21,5 @@ def load_model():
 
     model = torch.jit.load(f_checkpoint)
 
-    return model
+    return f_checkpoint
 
