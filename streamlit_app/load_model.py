@@ -19,7 +19,7 @@ def load_weights():
         out = "model/scripted_model1.pt"
         gdown.download(url, out, quiet=False)
 
-    model = torch.jit.load(f_checkpoint)
+
 
     return f_checkpoint
 

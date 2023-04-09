@@ -2,12 +2,13 @@ import cv2
 import numpy as np
 from PIL import Image
 import streamlit
-import torch
+
 from albumentations.augmentations.geometric.resize import Resize
 import torch.nn.functional as F
 from pathlib import Path
 import sys
 from load_model import load_weights
+import torch
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from Tokenizer.Tokenizer import token_to_strings
