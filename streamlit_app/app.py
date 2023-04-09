@@ -22,7 +22,7 @@ cloud_model_location = "1j-ECpr0PIVbJGeRKFeYozDq7M4urk7sP"
 
 
 
-@streamlit.cache
+#@streamlit.cache
 def load_model():
     save_dest = Path('model')
     save_dest.mkdir(exist_ok=True)
