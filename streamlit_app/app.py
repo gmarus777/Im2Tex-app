@@ -22,6 +22,13 @@ max_W = 1024
 cloud_model_location = "1j-ECpr0PIVbJGeRKFeYozDq7M4urk7sP"
 
 
+@streamlit.cache
+def load():
+    return load_model()
+
+model = load()
+
+
 
 
 
@@ -70,12 +77,13 @@ if __name__ == '__main__':
 
         image_tensor = F.pad(image_tensor, (0, max_W - new_w, 0, max_H - new_h), value=0)
 
+
+
     if streamlit.button('Convert'):
         if uploaded_image is not None and image_tensor is not None:
             files = {"file": uploaded_image.getvalue()}
             with streamlit.spinner('Converting Image to LaTeX'):
-                with streamlit.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-                    model = load_model()
+
                 prediction = model(image_tensor.unsqueeze(0))
                 latex_code = token_to_strings(tokens=prediction)
 
