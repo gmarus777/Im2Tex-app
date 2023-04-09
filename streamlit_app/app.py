@@ -47,7 +47,7 @@ uploaded_image = streamlit.file_uploader(
 )
 
 
-@streamlit.cache
+#@streamlit.cache
 def load_model():
     path = load_weights()
     model = torch.jit.load(path)
