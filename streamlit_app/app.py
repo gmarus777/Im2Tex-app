@@ -74,7 +74,8 @@ if __name__ == '__main__':
         if uploaded_image is not None and image_tensor is not None:
             files = {"file": uploaded_image.getvalue()}
             with streamlit.spinner('Converting Image to LaTeX'):
-                model = load_model()
+                with streamlit.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+                    model = load_model()
                 prediction = model(image_tensor.unsqueeze(0))
                 latex_code = token_to_strings(tokens=prediction)
 
