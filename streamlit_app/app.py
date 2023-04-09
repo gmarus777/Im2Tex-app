@@ -2,12 +2,13 @@ import cv2
 import numpy as np
 from PIL import Image
 import streamlit
-import torch
+
 from albumentations.augmentations.geometric.resize import Resize
 import torch.nn.functional as F
 from pathlib import Path
 import sys
-import gdown
+from load_model import load_model
+
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from Tokenizer.Tokenizer import token_to_strings
 from Tokenizer.transform import Image_Transforms
@@ -22,27 +23,7 @@ cloud_model_location = "1j-ECpr0PIVbJGeRKFeYozDq7M4urk7sP"
 
 
 
-#@streamlit.cache
-def load_model():
-    save_dest = Path('model')
-    save_dest.mkdir(exist_ok=True)
 
-    f_checkpoint = Path("model/scripted_model1.pt")
-
-    #https://drive.google.com/file/d/1j-ECpr0PIVbJGeRKFeYozDq7M4urk7sP/view?usp=share_link
-    if not f_checkpoint.exists():
-        with streamlit.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            #from GD_download import download_file_from_google_drive
-            #download_file_from_google_drive(cloud_model_location, f_checkpoint)
-            url = 'https://drive.google.com/uc?id=1j-ECpr0PIVbJGeRKFeYozDq7M4urk7sP'
-            out = "model/scripted_model1.pt"
-            gdown.download(url, out, quiet=False)
-
-    model = torch.jit.load(f_checkpoint)
-
-    return model
-
-MODEL = load_model()
 
 if __name__ == '__main__':
     streamlit.set_page_config(page_title='LaTeX OCR Model',
@@ -61,6 +42,11 @@ if __name__ == '__main__':
         'Upload Image',
         type=['png', 'jpg'],
     )
+
+
+
+
+
 
     if uploaded_image is not None:
         image = Image.open(uploaded_image).convert('RGB')
@@ -88,7 +74,8 @@ if __name__ == '__main__':
         if uploaded_image is not None and image_tensor is not None:
             files = {"file": uploaded_image.getvalue()}
             with streamlit.spinner('Converting Image to LaTeX'):
-                prediction = MODEL(image_tensor.unsqueeze(0))
+                model = load_model()
+                prediction = model(image_tensor.unsqueeze(0))
                 latex_code = token_to_strings(tokens=prediction)
 
                 #Docker image
