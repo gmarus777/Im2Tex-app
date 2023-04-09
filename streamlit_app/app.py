@@ -52,7 +52,7 @@ def load_model():
     model = torch.jit.load(path)
     return model
 
-model = load_model
+model = load_model()
 
 
 
