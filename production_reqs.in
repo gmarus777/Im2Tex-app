@@ -1,0 +1,23 @@
+# This file generetes reqs.txt by pip-compile
+# To update, run:
+#
+#    pip-compile production_reqs.in
+
+fastapi
+albumentations
+numpy
+requests
+smart_open
+toml
+torch
+torchvision
+tqdm
+fastapi
+streamlit
+uvicorn
+opencv-python-headless
+requests
+python-multipart
+gdown
+
+
