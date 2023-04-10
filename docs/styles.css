@@ -150,3 +150,7 @@ transition: font-size 0.3s ease;
 }
 
 
+.right-col iframe {
+    position: relative;
+    top: -50px;
+}
