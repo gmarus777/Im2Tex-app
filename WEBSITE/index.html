@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathOCR - Convert Math Formulas to LaTeX Code</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation menu -->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">
+            <span class="logo-text">Im<span class="logoright-accent">2</span><span class="logo-accent">Tex</span></span>
+             </div>
+             <ul>
+                <li><a href="index.html" target="_self">Home</a></li>
+                <li><a href="about.html" target="_self">About</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home section -->
+        <section id="home">
+            <!--h1>LaTeX OCR - app</h1-->
+            <iframe src="https://gmarus777-im2latex-streamlitcloud-app-streamlit-appapp-o6u26t.streamlit.app/?embedded=true" width="1200" height="1200"></iframe>
+            </section>
+            
+   
+ <!-- New menu button -->
+ 
+    <span class="new-menu-btn">Im<span class="logoright-accent">2</span><span class="logo-accent">Tex</span></span>
+
+
+<!-- Footer -->
+<footer>
+    <p>&copy; Im2Tex OCR - Convert Math Formulas to LaTeX Code. All Rights Reserved.</p>
+</footer>
+
+<!--script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script-->
+
+<script>
+    // Cache navigation elements
+    const nav = document.querySelector('nav');
+    const navLogo = document.querySelector('.logo');
+    const navLinks = document.querySelectorAll('nav li');
+    const newMenuBtn = document.querySelector('.new-menu-btn');
+
+    // Add event listener for scroll event
+    document.addEventListener('scroll', function () {
+        if (window.scrollY > 100) {
+            nav.classList.add('hidden');
+           
+            navLinks.forEach(link => link.classList.add('visible'));
+        } else {
+            nav.classList.remove('hidden');
+            
+            navLinks.forEach(link => link.classList.remove('visible'));
+        }
+    });
+
+   
+        // Show the original menu when the new menu button is clicked
+       
+        newMenuBtn.addEventListener('click', function () {
+            nav.classList.toggle('hidden');
+        });
+
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation menu styles */
+nav {
+    background-color: rgb(36, 119, 149);
+    padding: 30px;
+    position: -webkit-sticky;
+    position: sticky;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    align-items: center;
+    transition: background-color 0.5s ease, padding 0.5s ease;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    float: left;
+}
+
+nav a {
+    display: block;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    transition:  rgb(57, 179, 223) 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background-color: rgb(19, 85, 114);
+}
+
+.menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 14px 16px;
+}
+
+.menu-btn i {
+    font-size: 84px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    nav ul.open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-btn {
+        display: block;
+    
+    }
+     
+    }
+   
+
+
+/* Main content styles */
+main {
+    padding-top: 10px;
+}
+
+section {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Logo styles */
+.logo {
+    text-align: left;
+    margin: 0;
+}
+
+.logo-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+}
+
+.logo-accent {
+    color: rgb(221, 102, 154);
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+}
+/* Add this to your existing CSS code */
+nav.hidden {
+    background-color: transparent;
+    padding: 0;
+}
+
+nav .logo.visible {
+    margin: 0;
+}
+
+nav li.visible a {
+    padding: 14px 16px;
+}
+
+
+
+
+.logoright-accent {
+    color: rgb(42, 150, 140);
+}
+.new-menu-btn {
+position: fixed;
+right: 10px;
+top: 10px;
+background-color: rgb(36, 119, 149);
+color: rgb(7, 6, 6);
+padding: 10px;
+border-radius: 50%;
+cursor: pointer;
+z-index: 1000;
+transition: font-size 0.3s ease;
+}
+
+
+
+.new-menu-btn:hover {
+    font-size: 1.5rem;
+}
+
+
