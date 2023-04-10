@@ -153,4 +153,5 @@ transition: font-size 0.3s ease;
 .right-col iframe {
     position: relative;
     top: -40px;
+    bottom: -100px;
 }
