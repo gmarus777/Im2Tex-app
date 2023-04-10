@@ -38,7 +38,7 @@ streamlit.set_page_config(page_title='LaTeX OCR Model',
                           }
                           )
 
-streamlit.title('LaTeX OCR')
+streamlit.title('Im2Tex OCR')
 streamlit.markdown('Convert Math Formula Images to LaTeX Code.\n\nBased on the `image-to-tex-OCR` project. For more details  [![github](https://img.shields.io/badge/image--to--Tex--OCR-visit-a?style=social&logo=github)](https://github.com/gmarus777/image-to-tex-OCR)')
 
 uploaded_image = streamlit.file_uploader(
