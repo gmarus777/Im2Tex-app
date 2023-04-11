@@ -42,7 +42,25 @@
     <section id="Inspiration">
         <h2>Inspiration </h2>
         <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
-        <p>The inspiration for <span style="color: black;font-weight: bold">Im</span><span style="color: rgb(42, 150, 140);font-weight: bold">2</span><span style="color: rgb(221, 102, 154);font-weight: bold">Tex</span> project stems from my involvement in a project led by Dr. Jan Reimann at Penn State University. The primary objective of this project was to develop a platform utilizing Jupyter Notebooks for open-source content sharing, enabling the creation and deployment of accessible and interactive course content. The resulting infrastructure our team developed  supports a diverse range of content delivery formats, such as e-books, interactive computational notebooks, and QTI quizzes for importing into Canvas. Additionally, it offers flexible and cost-effective cloud-hosting workflows, effectively addressing a common barrier to using Jupyter Notebooks in classrooms. Our team leveraged this platform to redesign the Math 110 Techniques of Calculus course at Penn State, successfully piloting it in Spring 2022. While working on this groundbreaking educational endeavor, I identified a significant gap in the available tools: there was no open-source OCR (Optical Character Recognition) software capable of processing images of full-page PDFs or the PDFs themselves, which contained both mathematical formulas and text, and converting them into LaTeX code. Recognizing the immense potential of such a solution, I embarked on a multi-stage project aimed at developing a comprehensive, open-source full-page-to-LaTeX OCR software. As it stands, we have successfully implemented OCR capabilities for mathematical formulas and are actively working to extend our software to handle full pages including handwritten notes.
+        <p>The inspiration for
+             <span style="color: black;font-weight: bold">Im</span><span style="color: rgb(42, 150, 140);font-weight: bold">2</span><span style="color: rgb(221, 102, 154);font-weight: bold">Tex</span> 
+             project stems from my involvement in a project led by Dr. Jan Reimann at Penn State University.
+            The primary objective of this project was to develop a platform utilizing Jupyter Notebooks for open-source content sharing,
+             enabling the creation and deployment of accessible and interactive course content.
+              The resulting infrastructure our team developed  supports a diverse range of content delivery formats,
+               such as e-books, interactive computational notebooks, and QTI quizzes for importing into Canvas.
+                Additionally, it offers flexible and cost-effective cloud-hosting workflows,
+                 effectively addressing a common barrier to using Jupyter Notebooks in classrooms.
+                Our team leveraged this platform to redesign the Math 110 Techniques of Calculus course at Penn State,
+                 successfully piloting it in Spring 2022. While working on this groundbreaking educational endeavor,
+                  I identified a significant gap in the available tools:
+                   there was no open-source OCR (Optical Character Recognition) software capable of processing
+                    images of full-page PDFs or the PDFs themselves, which contained both mathematical formulas and text,
+                     and converting them into LaTeX code. Recognizing the immense potential of such a solution,
+                      I embarked on a multi-stage project aimed at developing a comprehensive,
+                       open-source full-page-to-LaTeX OCR software. As it stands,
+                        we have successfully implemented OCR capabilities for mathematical formulas and
+                         are actively working to extend our software to handle full pages including handwritten notes.
             </p>
         </div>
     </section>
@@ -55,8 +73,10 @@
         <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
         <p>
 
-            <span style="color: black;font-weight: bold">Im</span><span style="color: rgb(42, 150, 140);font-weight: bold">2</span><span style="color: rgb(221, 102, 154);font-weight: bold">Tex</span>  is a powerful tool designed to simplify the process of converting images containing mathematical formulas (in formats such as PNG and JPEG) into LaTeX code. 
-            Our system utilizes a combination of Convolutional Neural Network (CNN) backbone and Transformer decoder model and accurately recognize and interpret complex mathematical symbols, expressions, and equations within the images. The tool is highly versatile, user-friendly, and ensures precise conversion into LaTeX code.
+            <span style="color: black;font-weight: bold">Im</span><span style="color: rgb(42, 150, 140);font-weight: bold">2</span><span style="color: rgb(221, 102, 154);font-weight: bold">Tex</span>  is a tool designed to simplify the process of converting images containing mathematical formulas (in formats such as PNG and JPEG) into LaTeX code. 
+            Our system utilizes a combination of Convolutional Neural Network (CNN) backbone and Transformer decoder model
+             and accurately recognize and interpret complex mathematical symbols, expressions, and equations within the images.
+              The tool is highly versatile, user-friendly, and ensures precise conversion into LaTeX code.
         </div>
     </section>
 </div>
@@ -65,7 +85,37 @@
     <section id="How it was built">
         <h2>How it was built</h2>
         <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
-        <p> Coming</p>
+        <p> Our starting point was
+             <a href="https://im2markup.yuntiandeng.com" target="_blank">the Image-to-Markup project</a>
+             developed by the Harvard NLP group, which served as a valuable template. 
+            We then customized and revamped the data generation tools based on our needs and findings,
+            culminating in the creation of our data generation project,
+            <a href="https://github.com/gmarus777/Printed-Latex-Data-Generation" target="_blank">Printed-Latex-Data-Generation</a>
+            This project enables users to parse ArXiv papers, extract LaTeX code, and generate corresponding .png images
+            and LaTeX code labels. Our data generation tools offer customization for resolution,
+             as we discovered that higher resolution training data significantly impacts model performance.
+            Our 
+            <a href="https://zenodo.org/record/7738969#.ZDWIQy-B2Lc" target="_blank">generated dataset</a>
+             demonstrates the capabilities of our data generation tools. Subsequently,
+              we turned to the preprint by S. Singh 2018
+              <a href="https://arxiv.org/abs/1802.05415" target="_blank">Image-to-Markup Generation with Coarse-to-Fine Attention</a>
+               as
+                a foundation for our image-to-LaTeX model development. Our final model employs
+                 a CNN ResNet34 backbone and a Transformer decoder. Extensive work has been dedicated
+                  to preprocessing the data to ensure our model can generalize beyond the dataset,
+                   which is where higher resolution and our custom data generation tools proved essential.
+                    For a more in-depth exploration, please visit the
+                    <a href="https://github.com/gmarus777/image-to-tex-OCR" target="_blank">GitHub page</a>
+                     GitHub page
+                    of our project.
+            
+            
+
+
+
+
+
+        </p>
 
           
         </div>
