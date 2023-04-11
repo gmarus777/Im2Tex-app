@@ -126,7 +126,41 @@
     <section id="Challenges encountered">
         <h2>Challenges encountered</h2>
         <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
-        <p> Coming</p>
+        <p> One of the most significant challenges encountered by others developing similar models is poor generalization to instances outside the dataset.
+            To address this issue, we focused on implementing robust preprocessing steps for images.
+             Our model's input size during training is limited to strips with a height of 128 pixels and a width of 1024 pixels,
+              maintaining a maximum aspect ratio of 8. We then invert colors and apply various transformations using the Albumentations package.
+               Inverting colors enables us to pad with a value of zero, which has been demonstrated to facilitate faster model convergence.
+                We also observed that higher resolution is advantageous, given that LaTeX code often contains multiple symbols in a relatively
+                 small area of the image (such as nested subscripts and superscripts).
+            </p>
+            <p>
+            Our current model performs well with single lines of formulas or matrices comprising up to four rows.
+             We are in the process of developing a separate model for diagrams, tables, and matrices with more than four rows,
+              all of which will be incorporated into our comprehensive paragraph recognition model.
+            The original dataset used in the
+
+             <a href="https://im2markup.yuntiandeng.com" target="_blank">the Image-to-Markup project</a>
+             
+             is of low resolution,
+             and employing it for training results in suboptimal model generalization, as noted by others working with similar datasets.
+              Our solution involved redeveloping the dataset to generate one with significantly higher resolution,
+               which we then randomly compress through transformations during the training phase.
+            
+
+                 To improve our model, we employ a higher-resolution dataset and
+                  limit the maximum height and width during training to 128 pixels and 1024 pixels,
+                   respectively, adhering to a maximum aspect ratio value of 8.
+                    We rescale the images to maintain a height of 128 pixels,
+                     preserving the aspect ratio provided it stays below the value of 8.
+                      For larger aspect ratios, we truncate them to a value of 8.
+                       Following this, we apply transformations that introduce random scaling,
+                        shifting of images, and various other modifications,
+                         such as padding the images to achieve the required strip size of 128 by 1024.
+                          These crucial steps significantly enhance the model's adaptability, accuracy, and overall performance.
+
+
+        </p>
 
           
         </div>
