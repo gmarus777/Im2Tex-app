@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation menu -->
+     <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">
+            <span class="logo-text">Im<span class="logoright-accent">2</span><span class="logo-accent">Tex</span></span>
+             </div>
+             <ul>
+                <li><a href="index.html" target="_self">Home</a></li>
+                  <li><a href="model.html" target="_self">Model</a></li>
+                 <li><a href="generate.html" target="_self">Dataset</a></li>
+                <li><a href="about.html" target="_self">About </a></li>
+
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Us section -->
+    <section id="Generate Im2Tex Dataset">
+        <h2>Generate Im2Tex Dataset </h2>
+
+        <p>  <a href="https://github.com/gmarus777/Printed-Latex-Data-Generation" target="_blank">Tools</a> to generate Synthetic Tex-Formula and corresponding svg/png image Dataset from a collection of tex files.  </p>
+        <p>
+            <a href="https://github.com/gmarus777/Printed-Latex-Data-Generation">
+            <img src="https://img.shields.io/badge/Printed--Latex--Data--Generation-visit-a?style=social&logo=github" alt="Description of the image">
+        </a>
+            </p>
+        <p>
+
+
+        </p>
+
+        <p>
+           <strong> PIP Executable module is in the works and will be released soon.</strong>
+
+        </p>
+    </section>
+
+
+
+
+    <div style="text-align: center;">
+    <section id="Custom Synthetic Data Generating tools">
+        <h2>Overview of our Custom Synthetic Data Generating tools </h2>
+        <div style="display: flex; flex-direction: column; align-items: left; max-width: 800px; margin: 0 auto; text-align: left;">
+
+        <!-- Insert the converted Markdown content below -->
+
+        <p>Python and JS tools for generating Printed Latex Dataset (images of tex formulas with labels) via parsing Cornell's <a href="https://www.cs.cornell.edu/projects/kddcup/datasets.html" target="_blank">KDDCUP</a>. Also see <a href="https://www.cs.cornell.edu/home/kleinber/kddcup2003.pdf" target="_blank">KDDCUP paper</a>.</p>
+        <br />
+
+        <p><strong>Note: parsing for ArXiv, Wikipedia, and Stackexchange sources are coming.</strong></p>
+        <p><strong>Note: One can use any .tar files with LaTeX formulas to parse, need to manually add it to the folder.</strong></p>
+        <br />
+        <br />
+
+        <h2>How to Generate Dataset</h2>
+        <p>The easiest way to generate data is via Jupyter Notebook <code>Data generation.ipynb</code> located in folder <code>Jupyter Notebooks/</code>. See section Generate using Jupyter Notebook Example for step-by-step instructions.</p>
+
+        <p>Final outputs are located in <code>Data</code> folder.</p>
+
+        <p>Final outputs:</p>
+        <ul>
+            <li>folder <code>generated_png_images</code> containing PNG images</li>
+            <li><code>corresponding_png_images.txt</code> each new line contains PNG images filename for the folder <code>generated_png_images</code></li>
+            <li><code>final_png_formulas.txt</code> each new line contains a corresponding LaTeX formula</li>
+            <li>folder <code>raw_data</code> containing raw downloaded data</li>
+            <li>folder <code>temporary_data</code> containing formulas from various stages of processing and SVG images generated along the way</li>
+        </ul>
+        <br />
+        <br />
+
+        <h2>Generate using Jupyter Notebook Example</h2>
+
+        <h3>Step 1: Notebook Initialization</h3>
+        <p>Navigate to the <code>Jupyter Notebooks/</code> directory and open the provided notebook. Execute all cells except for the function:</p>
+
+        <pre>
+            <code>Generate_Printed_Tex(download_tex_dataset=False,
+                generate_tex_formulas=False,
+                number_tex_formulas_to_generate=1,
+                generate_svg_images_from_tex=False,
+                generate_png_from_svg=False)</code>
+        </pre>
+
+        <p>We will invoke this function in subsequent steps with different flags.</p>
+
+        <h3>Step 2: Dataset Download</h3>
+        <p>Use the <code>Generate_Printed_Tex</code> function to download the LaTeX dataset. Currently, the default is the KDD CUP dataset. However, you can specify URLs to any LaTeX-containing <code>.tar</code> files in the <code>configs.py</code>.</p>
+
+        <p>Set only the <code>download_tex_dataset=True</code> flag, leaving the others set to <code>False</code>.</p>
+
+        <h3>Step 3: Extract LaTeX Formulas</h3>
+        <p>With the dataset in place, process and extract LaTeX formulas:</p>
+
+        <p>Set only the <code>generate_tex_formulas=True</code> flag and ensure all other flags are set to <code>False</code>.</p>
+
+        <p><strong>Note:</strong> If <code>number_tex_formulas_to_generate</code> is less than 1001, only one <code>.tar</code> file will be parsed. For values greater than or equal to 1001, all downloaded <code>.tar</code> files will be processed.</p>
+
+        <h3>Step 4: Convert LaTeX to SVG</h3>
+        <p>To convert preprocessed LaTeX formulas into SVG format:</p>
+
+        <ol>
+            <li>Navigate to the <code>tex_to_svg.py</code> file.</li>
+            <li>Modify the constants:
+                <ul>
+                    <li><code>MAX_NUMBER_TO_RENDER = 500*1000</code> (determines the maximum number of SVG LaTeX formulas to render)</li>
+                    <li><code>THREADS = 8</code> (set to the number of CPU cores, ensure it's less than the total available cores on your system)</li>
+                </ul>
+            </li>
+            <li>Then, run the <code>Generate_Printed_Tex</code> function with the <code>generate_svg_images_from_tex=True</code> flag.</li>
+        </ol>
+
+        <h3>Step 5: Convert SVG to PNG</h3>
+        <p>Finally, transform the SVG images into PNG format:</p>
+
+        <ol>
+            <li>Before initiating the process, ensure you have <code>Inkscape</code> installed and accessible via the command line for MacOS. For Linux, the process will use <code>librsvg2</code>.</li>
+            <li>Visit the <code>svg_to_png.py</code> file and adjust the parameters:
+                <ul>
+                    <li><code>THREADS = 7</code> (set this to a value less than your available CPU cores)</li>
+                    <li><code>PNG_WIDTH = 512</code></li>
+                    <li><code>PNG_HEIGHT = 64</code></li>
+                </ul>
+            </li>
+            <li>Invoke the <code>Generate_Printed_Tex</code> function with the <code>generate_png_from_svg=True</code> flag to start the conversion.</li>
+        </ol>
+
+        <p>Running it will output all the data in <code>Data</code> folder.</p>
+
+        <p>Final outputs:</p>
+        <ul>
+            <li>folder <code>generated_png_images</code> containing PNG images</li>
+            <li><code>corresponding_png_images.txt</code> each new line contains PNG images filename for the folder <code>generated_png_images</code></li>
+            <li><code>final_png_formulas.txt</code> each new line contains a corresponding LaTeX formula</li>
+            <li>folder <code>raw_data</code> containing raw downloaded data</li>
+            <li>folder <code>temporary_data</code> containing formulas from various stages of processing and SVG images generated along the way</li>
+        </ul>
+        <br />
+        <br />
+
+        <h2>Generated Dataset im2latex 230k</h2>
+
+        <p>You can download a prebuilt dataset 230k from <a href="https://zenodo.org/record/7738969#.ZBJJSi-B2Lc" target="_blank">here</a>.</p>
+
+        <p>Some Dataset im2latex 230k Characteristics:</p>
+        <ul>
+            <li>images are of varying sizes with maximum Height of 431 and maximum Width of 6816</li>
+            <li>sizes of formulas vary from 6 to 970 (tokenized length) with distribution below</li>
+        </ul>
+
+        <img src="images/histogram.png" alt="Histogram of formula sizes">
+
+        <p>comes with a vocabulary 230k.json of size 579, which was generated on a bigger Dataset of around 330k</p>
+
+        <p>sample image:</p>
+        <img src="images/sample.png" alt="Sample image">
+
+        <p><strong>Note: This code is very ad-hoc and requires tinkering with the source</strong></p>
+        <br />
+        <br />
+
+        <h2>Dependencies</h2>
+        <ol>
+            <li>Tested with Python 3.9.7 and <a href="https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh" target="_blank">Anaconda version 2021.11</a></li>
+            <li><code>pip install opencv-python</code></li>
+            <li><code>pip install smart_open</code></li>
+            <li>For Tex to SVG <a href="https://www.npmjs.com/package/tex2svg" target="_blank">see</a>:</li>
+            <ul>
+                <li><code>sudo apt install nodejs npm</code></li>
+                <li><code>sudo npm install --global mathjax-node-cli</code></li>
+            </ul>
+            <li>For SVG to PNG:</li>
+            <ul>
+                <li>Linux: <a href="https://ubuntu.pkgs.org/20.04/ubuntu-universe-arm64/librsvg2-bin_2.48.2-1_arm64.deb.html" target="_blank">librsvg2-bin</a></li>
+                <li><code>sudo apt install librsvg2-bin</code></li>
+                <li>For MacOS: Download <a href="https://inkscape.org" target="_blank">Inkscape</a>, also see <a href="https://stackoverflow.com/questions/9853325/how-to-convert-a-svg-to-a-png-with-imagemagick" target="_blank">here</a></li>
+            </ul>
+        </ol>
+        <br />
+        <br />
+
+        <h2>Contents</h2>
+        <ul>
+            <li><code>Printed_Tex.py</code> - Main module</li>
+            <li><code>download_data_utils.py</code> - Contains tools for downloading tex tars and unpacking and parsing them.</li>
+            <li><code>configs.py</code> - Contains Paths and command line script commands.</li>
+            <li><code>third_party/</code> - Contains Katex for parsing LaTeX formulas</li>
+            <li><code>preprocess_formulas.py</code> and <code>preprocess_formulas.js</code> - Collection of tools for handling and parsing LaTeX formulas</li>
+            <li><code>svg_to_png.py</code> - Functions to convert LaTeX formulas to SVG images using MathJax</li>
+            <li><code>png_to_svg.py</code> - Functions to convert SVG images formulas to PNG images using <code>inkscape</code> for (Darwin) MacOS and <code>rsvg-convert</code> for all other systems.</li>
+            <li><code>Data/</code> - Contains <code>generated_png_images/</code> folder, <code>corresponding_png_images.txt</code>, and <code>final_png_formulas.txt</code>. Also temporary folder <code>temporary_data</code> (formulas for various stages of processing and generated SVG images) and <code>raw_data</code> where raw data is downloaded.</li>
+            <li><code>Jupyter Notebooks</code> - Contains examples of generating data using Jupyter notebooks</li>
+        </ul>
+        <br />
+        <br />
+
+        <p>Idea is based on <a href="https://github.com/Miffyli/im2latex-dataset" target="_blank">https://github.com/Miffyli/im2latex-dataset</a></p>
+        </div>
+    </section>
+</div>
+
+<!-- Add the same scripts and other resources as in your index.html file -->
+</body>
+
+</html>
