@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    
     <!-- Navigation menu -->
     <header>
          <nav>
@@ -32,7 +33,7 @@
 
     <!-- About Us section -->
     <section id="about">
-        <h2>About </h2>
+        <!--  <h2>About </h2> -->
         <p>Based on Im2Tex project available on Github   
             <a href="https://github.com/gmarus777/image-to-tex-OCR">
             <img src="https://img.shields.io/badge/image--to--Tex--OCR-visit-a?style=social&logo=github" alt="Description of the image">
@@ -44,8 +45,8 @@
 
 
 <div style="text-align: center;">
-    <section id="What it does">
-        <h2>What it does </h2>
+    <section id="What is">
+        <h2> <span style="color: black;font-weight: bold">Im</span><span style="color: rgb(42, 150, 140);font-weight: bold">2</span><span style="color: rgb(221, 102, 154);font-weight: bold">Tex</span> </h2>
         <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
         <p>
 
@@ -58,7 +59,7 @@
 </div>
 
 <div style="text-align: center;">
-    <section id="How it was built">
+    <section id="How it was built" >
         <h2>How it was built</h2>
         <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
         <p> Our starting point was
@@ -99,7 +100,47 @@
 </div>
 
 <div style="text-align: center;">
-    <section id="Challenges encountered">
+    <section id="Technical Challenges and Innovations">
+        <h2>Technical Challenges and Innovations</h2>
+        <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
+        <p>Developing models for complex tasks often faces challenges in generalization outside of the training dataset. To improve this, our team has implemented robust image preprocessing methods. We limit input sizes to strips of 128x1024 pixels, apply color inversions for efficient padding, and utilize the Albumentations package for dynamic transformations. This approach helps enhance model training efficiency and convergence.</p>
+        
+        <p>Our current model excels with single-line formulas and small matrices. Expanding its capabilities, we're developing models for more complex structures like large tables and diagrams. Enhancements include using high-resolution datasets to avoid issues like those encountered in the Image-to-Markup project, where low-resolution training data impaired model performance. Our revised strategy includes using a high-resolution dataset for training, applying random transformations to prevent overfitting, and optimizing image processing to maintain clarity and detail, ensuring high accuracy and adaptability of our OCR technology.</p>
+        
+        </div>
+    </section>
+</div>
+
+
+<div style="text-align: center;">
+    <section id="Inspiration">
+        <h2>Inspiration </h2>
+        <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
+        <p>The inspiration for
+             <span style="color: black;font-weight: bold">Im</span><span style="color: rgb(42, 150, 140);font-weight: bold">2</span><span style="color: rgb(221, 102, 154);font-weight: bold">Tex</span> 
+             project originated from a <a href="https://tlt.psu.edu/faculty/jan-reimann/" target="_blank">collaboration project</a> led by Dr. Jan Reimann at Penn State University, aiming to develop a platform using Jupyter Notebooks for sharing open-source content. We created infrastructure that supports diverse content formats like e-books, interactive notebooks, and quizzes for Canvas integration. Additionally, it offers cost-effective cloud-hosting solutions, enhancing Jupyter Notebooks' usability in educational settings. In Spring 2022, we used this platform to revise the Math 110 Techniques of Calculus course. During this initiative, we identified a need for an open-source OCR tool capable of converting images and PDFs containing mathematical formulas and text into LaTeX code. This realization led us to develop a comprehensive OCR software, now capable of processing mathematical formulas, with ongoing enhancements to include full-page content and handwritten notes.
+            </p>
+        </div>
+    </section>
+</div>
+
+    <!-- Add the same scripts and other resources as in your index.html file -->
+</body>
+
+
+<div style="text-align: center;">
+    <section id="Future plans and ideas to implement" style="display: none;">
+        <h2>Future plans and ideas to implement</h2>
+        <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
+        <p> Coming soon</p>
+        </div>
+    </section>
+</div>
+
+
+
+<div style="text-align: center;">
+    <section id="Challenges encountered" style="display: none;">
         <h2>Challenges encountered</h2>
         <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
         <p> One of the most significant challenges encountered by others developing similar models is poor generalization to instances outside the dataset.
@@ -143,34 +184,10 @@
         </div>
     </section>
 </div>
-
-
-<div style="text-align: center;">
-    <section id="Inspiration">
-        <h2>Inspiration </h2>
-        <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
-        <p>The inspiration for
-             <span style="color: black;font-weight: bold">Im</span><span style="color: rgb(42, 150, 140);font-weight: bold">2</span><span style="color: rgb(221, 102, 154);font-weight: bold">Tex</span> 
-             project originated from a <a href="https://tlt.psu.edu/faculty/jan-reimann/" target="_blank">collaboration project</a> led by Dr. Jan Reimann at Penn State University, aiming to develop a platform using Jupyter Notebooks for sharing open-source content. We created infrastructure that supports diverse content formats like e-books, interactive notebooks, and quizzes for Canvas integration. Additionally, it offers cost-effective cloud-hosting solutions, enhancing Jupyter Notebooks' usability in educational settings. In Spring 2022, we used this platform to revise the Math 110 Techniques of Calculus course. During this initiative, we identified a need for an open-source OCR tool capable of converting images and PDFs containing mathematical formulas and text into LaTeX code. This realization led us to develop a comprehensive OCR software, now capable of processing mathematical formulas, with ongoing enhancements to include full-page content and handwritten notes.
-            </p>
-        </div>
-    </section>
-</div>
-
-    <!-- Add the same scripts and other resources as in your index.html file -->
-</body>
-
-
-<div style="text-align: center;">
-    <section id="Future plans and ideas to implement">
-        <h2>Future plans and ideas to implement</h2>
-        <div style="display: flex; flex-direction: column; align-items: center; max-width: 800px; margin: 0 auto; text-align: left;">
-        <p> Coming</p>
-
-          
-        </div>
-    </section>
-</div>
+<footer>
+    <p style="text-align: center;">&copy; 2023 Im2Tex. All rights reserved.</p>
+    <p style="text-align: center;">Last updated: April 2024</p>
+</footer>
 
     <!-- Add the same scripts and other resources as in your index.html file -->
 </body>
